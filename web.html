@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart System for Environmental Monitoring</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Smart System</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#introduction">Introduction</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#sensors-actuators">Sensors & Actuators</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#key-features">Key Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#code-example">Code Example</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bg-primary text-white text-center py-5 animate__animated animate__fadeIn">
+        <div class="container">
+            <h1 class="display-4">Smart System for Environmental Monitoring</h1>
+            <p class="lead">Intelligent monitoring with advanced sensors and actuators.</p>
+        </div>
+    </header>
+
+    <section id="introduction" class="py-5">
+        <div class="container">
+            <h2 class="section-label text-center mb-4">Introduction</h2>
+            <div class="row">
+                <div class="col-md-6 animate__animated animate__fadeInLeft">
+                    <img src="C:\Users\moham\OneDrive\Desktop\Picture1.png" class="img-fluid rounded" alt="Introduction Image">
+                </div>
+                <div class="col-md-6 animate__animated animate__fadeInRight">
+                    <p>This smart system uses an ESP32 microcontroller, various sensors, and the Blynk platform to monitor environmental conditions. It detects temperature, humidity, gas levels, and light intensity. It also uses actuators like servo motors, buzzers, and LEDs for alerting and controlling the environment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sensors-actuators" class="bg-light py-5">
+        <div class="container">
+            <h2 class="section-label text-center mb-4">Sensors & Actuators</h2>
+            <div class="row">
+                <div class="col-md-6 animate__animated animate__fadeInLeft">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <i class="fas fa-thermometer-half me-2"></i>Temperature and Humidity Sensors (DHT22)
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fas fa-gas-pump me-2"></i>Gas Sensor (MQ-135)
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fas fa-sun me-2"></i>Photoresistor
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-6 animate__animated animate__fadeInRight">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <i class="fas fa-robot me-2"></i>Servo Motor
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fas fa-bell me-2"></i>Buzzer
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fas fa-lightbulb me-2"></i>LED
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="key-features" class="py-5">
+        <div class="container">
+            <h2 class="section-label text-center mb-4">Key Features</h2>
+            <div class="row">
+                <div class="col-md-6 animate__animated animate__fadeInLeft">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <i class="fas fa-temperature-high me-2"></i>Monitors indoor and outdoor temperature and humidity.
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fas fa-smoke me-2"></i>Detects gas levels and triggers alerts if a threshold is exceeded.
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-6 animate__animated animate__fadeInRight">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <i class="fas fa-sliders-h me-2"></i>Controls actuators like servo, buzzer, and LED based on sensor readings.
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fas fa-cloud me-2"></i>Integrates with Blynk for remote monitoring and control.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="code-example" class="bg-light py-5">
+        <div class="container">
+            <h2 class="section-label text-center mb-4">Code Example</h2>
+            <div class="code-container animate__animated animate__fadeInUp">
+                <pre><code>#define BLYNK_TEMPLATE_ID "TMPL2AtVJwnXK"
+                    #define BLYNK_TEMPLATE_ID "TMPL2AtVJwnXK"
+                    #define BLYNK_TEMPLATE_NAME "Smart System"
+                    #define BLYNK_AUTH_TOKEN "yAikByDAKy7eWhE-OrPkhr1ulQDW3PEu"
+                    
+                    #define BLYNK_PRINT Serial
+                    #include WiFi.h
+                    #include BlynkSimpleEsp32.h
+                    #include DHT.h
+                    #include ESP32Servo.h
+                    
+                    #define DHT_PIN_INDOOR 14     // Indoor DHT22 sensor pin
+                    #define DHT_PIN_OUTDOOR 13    // Outdoor DHT22 sensor pin
+                    #define SERVO_PIN 22   // Servo motor pin
+                    #define BUZZER_PIN 19  // Buzzer pin
+                    #define LED_PIN 23     // LED pin
+                    #define GAS_PIN A7     // MQ-135 gas sensor pin
+                    #define PHOTO_PIN A6   // Photoresistor pin
+                    
+                    #define DHT_TYPE DHT22
+                    #define SERVO_MIN_PULSE_WIDTH 1000
+                    #define SERVO_MAX_PULSE_WIDTH 2000
+                    #define GAS_THRESHOLD 1300   // Adjust this value as needed
+                    #define PHOTO_THRESHOLD 200  // Adjust this value as needed
+                    
+                    DHT dhtIndoor(DHT_PIN_INDOOR, DHT_TYPE);
+                    DHT dhtOutdoor(DHT_PIN_OUTDOOR, DHT_TYPE);
+                    Servo servo;
+                    BlynkTimer timer;
+                    
+                    char auth[] = BLYNK_AUTH_TOKEN;
+                    char ssid[] = "WE_EEC4E3";
+                    char pass[] = "20317148178";
+                    
+                    void sendGasSensorReading() {
+                      int gasValue = analogRead(GAS_PIN);
+                    
+                      Blynk.virtualWrite(V4, gasValue);
+                    
+                      if (gasValue > GAS_THRESHOLD) {
+                        Serial.println("Gas Leakage Detected!");
+                        Blynk.logEvent("smoke_detection", "Smoke Detected!");
+                        // You can add additional actions here, like sending notifications
+                      }
+                    }
+                    
+                    void sendIndoorSensor() {
+                      float h = dhtIndoor.readHumidity();
+                      float t = dhtIndoor.readTemperature(); // or dhtIndoor.readTemperature(true) for celsuis
+                      if (isnan(h) || isnan(t)) {
+                        Serial.println("Failed to read from Indoor DHT sensor!");
+                        return;
+                      }
+                    
+                      Serial.print("Indoor Temperature : ");
+                      Serial.print(t);
+                      Serial.print("°C, Indoor Humidity : ");
+                      Serial.print(h);
+                      Serial.println("%");
+                    
+                      Blynk.virtualWrite(V6, h);
+                      Blynk.virtualWrite(V5, t);
+                    
+                      if (t > 38) {
+                        Blynk.logEvent("temp_alert", "Indoor Temp above 38 degree");
+                      }
+                    }
+                    
+                    void sendOutdoorSensor() {
+                      float h = dhtOutdoor.readHumidity();
+                      float t = dhtOutdoor.readTemperature(); // or dhtOutdoor.readTemperature(true) for Fahrenheit
+                      if (isnan(h) || isnan(t)) {
+                        Serial.println("Failed to read from Outdoor DHT sensor!");
+                        return;
+                      }
+                    
+                      Serial.print("Outdoor Temperature : ");
+                      Serial.print(t);
+                      Serial.print("°C, Outdoor Humidity : ");
+                      Serial.print(h);
+                      Serial.println("%");
+                    
+                      Blynk.virtualWrite(V8, h);
+                      Blynk.virtualWrite(V7, t);
+                    
+                      if (t > 38) {
+                        Blynk.logEvent("temp_alert", "Outdoor Temp above 38 degree");
+                      }
+                    }
+                    
+                    
+                    void setup() {
+                      Serial.begin(115200);
+                      Blynk.begin(auth, ssid, pass);
+                      dhtIndoor.begin();
+                      dhtOutdoor.begin();
+                      servo.attach(SERVO_PIN, SERVO_MIN_PULSE_WIDTH, SERVO_MAX_PULSE_WIDTH);
+                      pinMode(BUZZER_PIN, OUTPUT);
+                      pinMode(LED_PIN, OUTPUT);
+                      timer.setInterval(2500L, sendIndoorSensor);
+                      timer.setInterval(2500L, sendOutdoorSensor);
+                      timer.setInterval(2500L, sendGasSensorReading);
+                    }
+                    
+                    void loop() {
+                      Blynk.run();
+                      timer.run();
+                    
+                      // Read DHT22 temperature and humidity
+                      float temperature = dhtIndoor.readTemperature();
+                      float humidity = dhtIndoor.readHumidity();
+                    
+                      // Read MQ-135 gas sensor value
+                      int gasValue = analogRead(GAS_PIN);
+                    
+                      // Read photoresistor value
+                      int photoValue = analogRead(PHOTO_PIN);
+                    
+                      // Print sensor values to serial monitor
+                      Serial.print("Temperature: ");
+                      Serial.print(temperature);
+                      Serial.print("°C  Humidity: ");
+                      Serial.print(humidity);
+                    
+                      // Actuate servo motor, buzzer, and LED based on sensor readings
+                      if (gasValue > GAS_THRESHOLD) {
+                        servo.write(180);  // Rotate servo to 90 degrees
+                        digitalWrite(BUZZER_PIN, HIGH);  // Activate buzzer
+                      } else {
+                        servo.write(0);  // Reset servo to 0 degrees
+                        digitalWrite(BUZZER_PIN, LOW);  // Deactivate buzzer
+                      }
+                    
+                      if (photoValue < PHOTO_THRESHOLD) {
+                        digitalWrite(LED_PIN, HIGH);  // Turn on LED
+                      } else {
+                        digitalWrite(LED_PIN, LOW);  // Turn off LED
+                      }
+                    
+                      delay(1000);  // Delay to prevent flooding the serial monitor
+                    }
+                </code></pre>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2023 Smart System. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p>Contact Information: <a href="mailto:mohamedhany.2007.22@gmail.com" class="text-white">mohamedhany.2007.22@gmail.com</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
